@@ -102,18 +102,30 @@ public class Player : MonoBehaviour {
 			direction = "left";
 		}
 		// Gamepad anim
-		if (inputDevice.LeftStickY.Value > 0) {
-			anim.Play("runUp");
+
+		if (Mathf.Abs (inputDevice.LeftStickY.Value) > Mathf.Abs (inputDevice.LeftStickX.Value)) {
+			if (inputDevice.LeftStickY.Value > 0) {
+				anim.Play ("runUp");
+				direction = "up";
+			} 
+			else if (inputDevice.LeftStickY < 0) {
+				anim.Play ("runDown");
+				direction = "down";
+			}
+		} 
+		else if (Mathf.Abs (inputDevice.LeftStickX.Value) > Mathf.Abs (inputDevice.LeftStickY.Value)) {
+			if (inputDevice.LeftStickX.Value > 0) {
+				anim.Play ("runRight");
+				direction = "right";
+			}
+			else if (inputDevice.LeftStickX.Value < 0) {
+				anim.Play ("runLeft");
+				direction = "left";
+			}
 		}
-		else if (inputDevice.LeftStickY.Value < 0) {
-			anim.Play("runDown");
-		}
-		if (inputDevice.LeftStickX.Value > 0) {
-			anim.Play("runRight");
-		}
-		else if (inputDevice.LeftStickX.Value < 0) {
-			anim.Play("runLeft");
-		}
+
+
+
 		// Gamepad movement
 		movement += Vector3.right * inputDevice.LeftStickX.Value + Vector3.up * inputDevice.LeftStickY.Value;
 		// Actually apply the movement
@@ -121,7 +133,7 @@ public class Player : MonoBehaviour {
 			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.ClampMagnitude(movement, 1) * speed * Time.deltaTime);
 		}
 
-		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S)) {
+		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || inputDevice.GetControl(InputControlType.LeftStickX).WasReleased ||Input.GetKeyUp(KeyCode.S) || inputDevice.GetControl(InputControlType.LeftStickY).WasReleased ) {
 			if (direction == "down") {
 				anim.Play ("idleDown");
 			}

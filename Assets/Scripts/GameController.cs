@@ -5,8 +5,6 @@ public class GameController : MonoBehaviour {
 
 	public static GameController instance;
 
-	public static GameController instance;
-
     void Awake () {
 		instance = this;
         Layers.Init();
