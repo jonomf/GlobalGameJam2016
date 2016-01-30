@@ -1,0 +1,15 @@
+Library/*
+Temp/*
+Builds/*
+obj/*
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.pidb
+*.userprefs
+*.DS_Store
+*Keyboard.meta
+Thumbs.db
+Thumbs.db.meta
+.mayaSwatches
