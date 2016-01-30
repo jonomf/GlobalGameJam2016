@@ -13,7 +13,7 @@ public class GodManager : MonoBehaviour {
     public const int BUFF_TARGET = 75;
     public const int HATE_TARGET = 25;
 
-    public const float DECREASE_SECONDS = 1;
+    public const float DECREASE_SECONDS = 3;
 
     public static IEnumerator DecreaseOnTimer() {
         while (true){

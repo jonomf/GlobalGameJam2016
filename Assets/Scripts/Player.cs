@@ -149,7 +149,7 @@ public class Player : MonoBehaviour {
 	private void Collect(GameObject obj) {
 		Destroy(obj);
 		collectAudio.Play();
-        GodManager.updateBars(0,0,1);
+        GodManager.updateBars(0,0,2);
 	}
 
 	public static void GetHurt(float damage = 5f) {
