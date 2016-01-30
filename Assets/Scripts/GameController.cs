@@ -5,8 +5,11 @@ public class GameController : MonoBehaviour {
 
 	public static GameController instance;
 
-	void Awake () {
+	public static GameController instance;
+
+    void Awake () {
 		instance = this;
-		Layers.Init();
+        Layers.Init();
+        StartCoroutine(GodManager.DecreaseOnTimer());
 	}
 }
