@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
 public class Player : MonoBehaviour {
 
@@ -15,11 +16,11 @@ public class Player : MonoBehaviour {
 
 	private Transform arrowReticle;
 	private Vector3 movement;
+	private Vector3 shootAngle;
+	private InputDevice inputDevice;
+	private Animator anim;
 
 	private Vector3 Offscreen { get { return Vector3.down * 10000; } }
-
-	Animator anim;
-
 
 	void Start() {
 		arrowReticle = (Instantiate(arrowReticlePrefab, Offscreen, Quaternion.identity) as GameObject).transform;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
+		inputDevice = InputManager.ActiveDevice;
 		Move();
 		Attack();
 	}
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour {
 
 	private void Move() {
 		movement = Vector3.zero;
+		// Keyboard anim + movement
 		if (Input.GetKey(KeyCode.W)) {
 			movement += Vector3.up;
 			anim.Play("runUp");
@@ -55,17 +58,31 @@ public class Player : MonoBehaviour {
 			movement += Vector3.left;
 			anim.Play ("runLeft");
 		}
-		GetComponent<Rigidbody2D>().MovePosition(transform.position + movement * speed * Time.deltaTime);
-
+		// Gamepad anim
+		if (inputDevice.LeftStickY.Value > 0) {
+			anim.Play("runUp");
+		}
+		else if (inputDevice.LeftStickY.Value < 0) {
+			anim.Play("runDown");
+		}
+		if (inputDevice.LeftStickX.Value > 0) {
+			anim.Play("runRight");
+		}
+		else if (inputDevice.LeftStickX.Value < 0) {
+			anim.Play("runLeft");
+		}
+		// Gamepad movement
+		movement += Vector3.right * inputDevice.LeftStickX.Value + Vector3.up * inputDevice.LeftStickY.Value;
+		// Actually apply the movement
+		GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.ClampMagnitude(movement, 1) * speed * Time.deltaTime);
+		
 		if (Input.anyKey == false) {
 			anim.Play("idleDown");
 		}
 	}
 		
-
-	private Vector3 shootAngle;
 	private void Attack() {
-		shootAngle = Vector3.zero;
+		shootAngle = Vector3.up * inputDevice.RightStickY.Value + Vector3.right * inputDevice.RightStickX.Value;
 		if (Input.GetKey(KeyCode.UpArrow)){
 			shootAngle += Vector3.up;
 		} else if (Input.GetKey(KeyCode.DownArrow)){
@@ -76,9 +93,9 @@ public class Player : MonoBehaviour {
 		} else if (Input.GetKey(KeyCode.RightArrow)){
 			shootAngle += Vector3.right;
 		}
-		arrowReticle.position = transform.position + shootAngle * arrowReticleDistance;
+		arrowReticle.position = transform.position + Vector3.ClampMagnitude(shootAngle, 1) * arrowReticleDistance;
 
-		if (Input.GetKeyDown(KeyCode.Space)){
+		if (Input.GetKeyDown(KeyCode.Space) || inputDevice.GetControl(InputControlType.RightTrigger).WasReleased){
 			ShootArrow(shootAngle);
 		}
 	}
