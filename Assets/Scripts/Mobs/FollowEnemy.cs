@@ -5,6 +5,7 @@ using System.Collections;
 public class FollowEnemy : MonoBehaviour {
 
 	public float speed = 5;
+	public float damage = 5;
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
@@ -12,7 +13,8 @@ public class FollowEnemy : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		if (other.gameObject.layer == Layers.PlayerNum){
-			Destroy(gameObject); // TODO: Hurt player
+			Destroy(gameObject);
+			Player.GetHurt(damage);
 		}
 	}
 

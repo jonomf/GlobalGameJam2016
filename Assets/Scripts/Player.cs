@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public static Player instance;
 
 	[Header("Settings")]
+	[SerializeField] private float startingHealth = 100;
 	public float speed;
 	public float arrowForce = 1000;
 	public float arrowReticleDistance = 2f;
@@ -18,20 +19,23 @@ public class Player : MonoBehaviour {
 
 	public static Vector3 Position { get { return instance.transform.position; } }
 
+	public static float Health { get; private set; }
+
 	private Transform arrowReticle;
 	private Vector3 movement;
 	private Vector3 shootAngle;
 	private InputDevice inputDevice;
 	private Animator anim;
+	private string direction = "down";
 
 	private Vector3 Offscreen { get { return Vector3.down * 10000; } }
 
-
-	string direction = "down";
 	void Start() {
 		instance = this;
 		arrowReticle = (Instantiate(arrowReticlePrefab, Offscreen, Quaternion.identity) as GameObject).transform;
 		anim = GetComponent<Animator> ();
+		Health = startingHealth;
+		UIContoller.UpdatePlayerHealth();
 	}
 
 	void Update () {
@@ -139,5 +143,18 @@ public class Player : MonoBehaviour {
 	private void Collect(GameObject obj) {
 		Destroy(obj);
 		collectAudio.Play();
+	}
+
+	public static void GetHurt(float damage = 5f) {
+		Health -= damage;
+		UIContoller.UpdatePlayerHealth();
+		if (Health <= 0){
+			Die();
+		}
+	}
+
+	private static void Die() {
+		Destroy(instance.gameObject);
+		Debug.Log("You be dead!");
 	}
 }
