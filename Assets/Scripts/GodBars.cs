@@ -80,7 +80,7 @@ public class GodManager {
         if(bar2Value < HATE_TARGET && bossNum != 2){
             //Do secondary penalty
         }
-        if(bar3Value < HATE_TARGET && bosNum != 3){
+        if(bar3Value < HATE_TARGET && bossNum != 3){
             //Do secondary penalty
         }
 
