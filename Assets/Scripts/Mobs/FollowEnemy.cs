@@ -11,8 +11,6 @@ public class FollowEnemy : MonoBehaviour {
 
 	private Vector3 direction;
 
-	float angle;
-
 	void Start () {
 		anim = GetComponent<Animator> ();
 	}
