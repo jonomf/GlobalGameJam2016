@@ -51,22 +51,30 @@ public class Player : MonoBehaviour {
 		// Keyboard anim + movement
 		if (Input.GetKey(KeyCode.W)) {
 			movement += Vector3.up;
-			anim.Play("runUp");
+			if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("runLeft") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("runRight")) {
+				anim.Play ("runUp");
+			}
 			direction = "up";
 		}
 		else if (Input.GetKey(KeyCode.S)) {
 			movement += Vector3.down;
-			anim.Play ("runDown");
+			if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("runLeft") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("runRight")) {
+				anim.Play ("runDown");
+			}
 			direction = "down";
 		}
 		if (Input.GetKey(KeyCode.D)) {
 			movement += Vector3.right;
-			anim.Play ("runRight");
+			if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("runUp") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("runDown")) {
+				anim.Play ("runRight");
+			}
 			direction = "right";
 		}
 		else if (Input.GetKey(KeyCode.A)) {
 			movement += Vector3.left;
-			anim.Play ("runLeft");
+			if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("runUp") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("runDown")) {
+				anim.Play ("runLeft");
+			}
 			direction = "left";
 		}
 		// Gamepad anim
