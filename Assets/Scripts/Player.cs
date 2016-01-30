@@ -18,8 +18,12 @@ public class Player : MonoBehaviour {
 
 	private Vector3 Offscreen { get { return Vector3.down * 10000; } }
 
+	Animator anim;
+
+
 	void Start() {
 		arrowReticle = (Instantiate(arrowReticlePrefab, Offscreen, Quaternion.identity) as GameObject).transform;
+		anim = GetComponent<Animator> ();
 	}
 
 	void Update () {
@@ -37,18 +41,27 @@ public class Player : MonoBehaviour {
 		movement = Vector3.zero;
 		if (Input.GetKey(KeyCode.W)) {
 			movement += Vector3.up;
+			anim.Play("runUp");
 		}
 		else if (Input.GetKey(KeyCode.S)) {
 			movement += Vector3.down;
+			anim.Play ("runDown");
 		}
 		if (Input.GetKey(KeyCode.D)) {
 			movement += Vector3.right;
+			anim.Play ("runRight");
 		}
 		else if (Input.GetKey(KeyCode.A)) {
 			movement += Vector3.left;
+			anim.Play ("runLeft");
 		}
 		GetComponent<Rigidbody2D>().MovePosition(transform.position + movement * speed * Time.deltaTime);
+
+		if (Input.anyKey == false) {
+			anim.Play("New State");
+		}
 	}
+		
 
 	private void Attack() {
 		if (Input.GetKey(KeyCode.UpArrow)){
