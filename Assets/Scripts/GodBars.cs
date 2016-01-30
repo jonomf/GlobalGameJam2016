@@ -52,9 +52,38 @@ public class GodManager {
 
     //Called at end-game. There can be multiple penalties but only ONE boss
     private static void checkPenalties(){
-        int boss = 0;
-        if(bar1Value < HATE_TARGET){
-
+        int bossNum = 0;
+        
+        //FIRST - determine the boss
+        //NOTE - <= gives preference to certain bosses
+        if(bar1Value <= bar2Value){
+            if(bar1Value <= bar3Value){
+                bossNum = 1;
+            }
+            else{
+                bossNum = 3;
+            }
         }
+        else{
+            if(bar2Value <= bar3Value){
+                bossNum = 2;
+            }
+            else{
+                bossNum = 3;
+            }
+        }
+
+        //NEXT - determine any extra penalties 
+        if(bar1Value < HATE_TARGET && bossNum != 1){
+            //Do secondary penalty
+        }
+        if(bar2Value < HATE_TARGET && bossNum != 2){
+            //Do secondary penalty
+        }
+        if(bar3Value < HATE_TARGET && bosNum != 3){
+            //Do secondary penalty
+        }
+
+        //We have the bossNum - DO BOSS STUFF!!
     }
 }
