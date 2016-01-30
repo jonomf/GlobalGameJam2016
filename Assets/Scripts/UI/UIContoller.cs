@@ -6,9 +6,6 @@ public class UIContoller : MonoBehaviour {
 
 	public static UIContoller instance;
 
-	public Slider boss1Slider;
-    public Slider boss2Slider;
-    public Slider boss3Slider;
 	public Slider playerHealthSlider;
 	
 	void Awake() {

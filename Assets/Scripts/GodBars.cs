@@ -46,7 +46,8 @@ public class GodManager : MonoBehaviour {
     }
 
     //updates the actual sliders
-    private static void updateSliders(){
+    private static void updateSliders() {
+	    if (UIController_GameScene.instance == null) return; // Not in the game scene.
         //create local copies
         int val1 = bar1Value;
         int val2 = bar2Value;
@@ -61,9 +62,9 @@ public class GodManager : MonoBehaviour {
         if(val3 < 0) val3 = 0;
 
         //update!
-        UIContoller.instance.boss1Slider.value = val1;
-        UIContoller.instance.boss2Slider.value = val2;
-        UIContoller.instance.boss3Slider.value = val3;
+        UIController_GameScene.instance.boss1Slider.value = val1;
+        UIController_GameScene.instance.boss2Slider.value = val2;
+        UIController_GameScene.instance.boss3Slider.value = val3;
     }
 
     //Called at end-game. Apply buffs (not mutually exclusive)

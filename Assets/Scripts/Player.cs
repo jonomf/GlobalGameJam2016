@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using InControl;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -49,6 +50,21 @@ public class Player : MonoBehaviour {
 		if (collision.gameObject.layer == Layers.CollectableNum) {
 			Collect(collision.gameObject);
 		}
+		if (collision.gameObject.layer == Layers.BossBulletNum){
+			gettingKnockedBack = true;
+			GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * 0.25f;
+			StartCoroutine(GetKnockedBack());
+			Destroy(collision.gameObject);
+			GetHurt();
+		}
+	}
+
+	private bool gettingKnockedBack;
+	private IEnumerator GetKnockedBack() {
+		while (GetComponent<Rigidbody2D>().velocity.magnitude > 2){
+			yield return null;
+		}
+		gettingKnockedBack = false;
 	}
 
 	private void Move() {
@@ -98,8 +114,10 @@ public class Player : MonoBehaviour {
 		// Gamepad movement
 		movement += Vector3.right * inputDevice.LeftStickX.Value + Vector3.up * inputDevice.LeftStickY.Value;
 		// Actually apply the movement
-		GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.ClampMagnitude(movement, 1) * speed * Time.deltaTime);
-		
+		if (!gettingKnockedBack){
+			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.ClampMagnitude(movement, 1) * speed * Time.deltaTime);
+		}
+
 		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S)) {
 			if (direction == "down") {
 				anim.Play ("idleDown");
@@ -130,7 +148,7 @@ public class Player : MonoBehaviour {
 		}
 		arrowReticle.position = transform.position + Vector3.ClampMagnitude(shootAngle, 1) * arrowReticleDistance;
 
-		if (Input.GetKeyDown(KeyCode.Space) || inputDevice.GetControl(InputControlType.RightTrigger).WasReleased){
+		if (shootAngle != Vector3.zero && (Input.GetKeyDown(KeyCode.Space) || inputDevice.GetControl(InputControlType.RightTrigger).WasReleased)){
 			ShootArrow(shootAngle);
 		}
 	}
@@ -157,8 +175,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	private static void Die() {
-		Destroy(instance.gameObject);
-		Debug.Log("You be dead!");
+	public static void Die() {
+		SceneManager.LoadScene("Lose");
 	}
 }
