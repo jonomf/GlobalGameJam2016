@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
 	private InputDevice inputDevice;
 	private Animator anim;
 	private string direction = "down";
+	private bool hasChild;
 
 	private Vector3 Offscreen { get { return Vector3.down * 10000; } }
 
