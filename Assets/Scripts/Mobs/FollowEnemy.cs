@@ -4,8 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class FollowEnemy : MonoBehaviour {
 
-	public float speed = 2;
-	public float damage = 5;
+	public float speed = 3;
+	public float damage = 10;
 
     public const int FOLLOW_DISTANCE = 8;
 
@@ -21,6 +21,7 @@ public class FollowEnemy : MonoBehaviour {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
 			Destroy(other.gameObject);
 			Destroy(gameObject);
+            GodManager.updateBars(5,-3,0);
 		}
 		if (other.gameObject.layer == Layers.PlayerNum){
 			Destroy(gameObject);

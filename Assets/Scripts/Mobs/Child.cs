@@ -16,6 +16,6 @@ public class Child : MonoBehaviour {
 
 	public static void ChildCollected() {
 		ChildHeld = false;
-        GodManager.updateBars(0,10,5);
+        GodManager.updateBars(-5,10,0);
 	}
 }

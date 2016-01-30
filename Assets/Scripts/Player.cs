@@ -173,13 +173,13 @@ public class Player : MonoBehaviour {
 		arrowRb.AddForce(direction * arrowForce);
 		arrowReticle.position = Offscreen;
 
-        GodManager.updateBars(2,-1,0);
+        //GodManager.updateBars(1,-1,0);
 	}
 
 	private void Collect(GameObject obj) {
 		Destroy(obj);
 		collectAudio.Play();
-        GodManager.updateBars(0,0,2);
+        GodManager.updateBars(0,0,3);
 	}
 
 	public static void GetHurt(float damage = 5f) {
