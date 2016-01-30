@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 	private Vector3 Offscreen { get { return Vector3.down * 10000; } }
 
 	Animator anim;
+	string direction = "down";
 
 
 	void Start() {
@@ -42,23 +43,38 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey(KeyCode.W)) {
 			movement += Vector3.up;
 			anim.Play("runUp");
+			direction = "up";
 		}
 		else if (Input.GetKey(KeyCode.S)) {
 			movement += Vector3.down;
 			anim.Play ("runDown");
+			direction = "down";
 		}
 		if (Input.GetKey(KeyCode.D)) {
 			movement += Vector3.right;
 			anim.Play ("runRight");
+			direction = "right";
 		}
 		else if (Input.GetKey(KeyCode.A)) {
 			movement += Vector3.left;
 			anim.Play ("runLeft");
+			direction = "left";
 		}
 		GetComponent<Rigidbody2D>().MovePosition(transform.position + movement * speed * Time.deltaTime);
 
-		if (Input.anyKey == false) {
-			anim.Play("New State");
+		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S)) {
+			if (direction == "down") {
+				anim.Play ("idleDown");
+			}
+			else if (direction == "up") {
+				anim.Play ("idleUp");
+			}
+			else if (direction == "right") {
+				anim.Play ("idleRight");
+			}
+			else if (direction == "left") {
+				anim.Play ("idleLeft");
+			} 
 		}
 	}
 		
