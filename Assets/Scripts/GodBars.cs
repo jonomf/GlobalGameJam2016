@@ -8,6 +8,9 @@ public class GodManager {
 	public static int bar1Value = 50;//Aggression
     public static int bar2Value = 50;//Serenity
     public static int bar3Value = 50;//Collection
+
+    public const int BUFF_TARGET = 75;
+    public const int HATE_TARGET = 25;
     
     //UPDATE 3 bars by specified bars (called by player/enemy functions)
     public static void updateBars(int d1, int d2, int d3){
@@ -15,7 +18,6 @@ public class GodManager {
         bar2Value += d2;
         bar3Value += d3;
 
-        clampBars();
         checkEndGame();
     }
 
@@ -25,38 +27,34 @@ public class GodManager {
         bar2Value--;
         bar3Value--;
 
-        clampBars();
-    }
-
-    //clamps all bar values to 0-100 range
-    private static void clampBars(){
-        if(bar1Value > 100){
-            bar1Value = 100;
-        }
-        if(bar1Value <0){
-            bar1Value = 0;
-        }
-        if(bar2Value > 100){
-            bar2Value = 100;
-        }
-        if(bar2Value <0){
-            bar2Value = 0;
-        }
-        if(bar3Value > 100){
-            bar3Value = 100;
-        }
-        if(bar3Value <0){
-            bar3Value = 0;
-        }
-    }
-
-    /*void Update(){
         checkEndGame();
-    }*/
+    }
 
+    //If a bar has hit 0 or 100, end the game
     private static void checkEndGame(){
-        if(bar1Value == 0 || bar2Value == 0 || bar3Value == 0){
-            //TODO: Throw an event to end the game!!
+        if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
+            //Start End Game process
+        }
+    }
+
+    //Called at end-game. Apply buffs (not mutually exclusive)
+    private static void checkBuffs(){
+        if(bar1Value >= BUFF_TARGET){
+            //apply god1 buff
+        }
+        if(bar2Value >= BUFF_TARGET){
+            //apply god1 buff
+        }
+        if(bar3Value >= BUFF_TARGET){
+            //apply god1 buff
+        }
+    }
+
+    //Called at end-game. There can be multiple penalties but only ONE boss
+    private static void checkPenalties(){
+        int boss = 0;
+        if(bar1Value < HATE_TARGET){
+
         }
     }
 }
