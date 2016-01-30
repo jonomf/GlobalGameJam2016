@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Arrow : MonoBehaviour {
 
+<<<<<<< HEAD
 	string direction = "";
 	float speed = 20;
 
@@ -31,5 +32,9 @@ public class Arrow : MonoBehaviour {
 		if (other.gameObject.layer == 8) {
 			Destroy (other.gameObject);
 		}
+=======
+	void OnCollisionEnter2D(Collision2D coll) {
+		Destroy(gameObject);
+>>>>>>> 7fe4f0821c3eb25173cde8bdd262429d8090031d
 	}
 }
