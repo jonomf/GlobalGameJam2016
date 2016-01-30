@@ -139,11 +139,14 @@ public class Player : MonoBehaviour {
 		Rigidbody2D arrowRb = (Instantiate(arrowPrefab, transform.position, Quaternion.Euler(direction)) as GameObject).GetComponent<Rigidbody2D>();
 		arrowRb.AddForce(direction * arrowForce);
 		arrowReticle.position = Offscreen;
+
+        GodManager.updateBars(1,-1,0);
 	}
 
 	private void Collect(GameObject obj) {
 		Destroy(obj);
 		collectAudio.Play();
+        GodManager.updateBars(0,0,1);
 	}
 
 	public static void GetHurt(float damage = 5f) {

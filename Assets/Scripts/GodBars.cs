@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //manages "happiness" bars for the 3 gods
-public class GodManager {
+public class GodManager : MonoBehaviour {
 
     //TODO: connect system to actual UNITY bars
 
@@ -19,6 +19,11 @@ public class GodManager {
         bar3Value += d3;
 
         checkEndGame();
+        updateSliders();
+    }
+
+    void Update(){
+
     }
 
     //Decrease all bars by 1 (called at some regular interval)
@@ -28,13 +33,37 @@ public class GodManager {
         bar3Value--;
 
         checkEndGame();
+        updateSliders();
     }
 
     //If a bar has hit 0 or 100, end the game
-    private static void checkEndGame(){
+    private static bool checkEndGame(){
         if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
             //Start End Game process
+            return true;
         }
+        return false;
+    }
+
+    //updates the actual sliders
+    private static void updateSliders(){
+        //create local copies
+        int val1 = bar1Value;
+        int val2 = bar2Value;
+        int val3 = bar3Value;
+
+        //clamp to 0-100
+        if(val1 > 100) val1 = 100;
+        if(val1 < 0) val1 = 0;
+        if(val2 > 100) val2 = 100;
+        if(val2 < 0) val2 = 0;
+        if(val3 > 100) val3 = 100;
+        if(val3 < 0) val3 = 0;
+
+        //update!
+        UIContoller.instance.boss1Slider.value = val1;
+        UIContoller.instance.boss2Slider.value = val2;
+        UIContoller.instance.boss3Slider.value = val3;
     }
 
     //Called at end-game. Apply buffs (not mutually exclusive)
