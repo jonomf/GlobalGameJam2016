@@ -4,6 +4,8 @@ using InControl;
 
 public class Player : MonoBehaviour {
 
+	public static Player instance;
+
 	[Header("Settings")]
 	public float speed;
 	public float arrowForce = 1000;
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour {
 	public GameObject arrowPrefab;
 	public GameObject arrowReticlePrefab;
 
+	public static Vector3 Position { get { return instance.transform.position; } }
+
 	private Transform arrowReticle;
 	private Vector3 movement;
 	private Vector3 shootAngle;
@@ -23,6 +27,7 @@ public class Player : MonoBehaviour {
 	private Vector3 Offscreen { get { return Vector3.down * 10000; } }
 
 	void Start() {
+		instance = this;
 		arrowReticle = (Instantiate(arrowReticlePrefab, Offscreen, Quaternion.identity) as GameObject).transform;
 		anim = GetComponent<Animator> ();
 	}
