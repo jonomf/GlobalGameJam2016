@@ -4,8 +4,10 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class FollowEnemy : MonoBehaviour {
 
-	public float speed = 5;
+	public float speed = 2;
 	public float damage = 5;
+
+    public const int FOLLOW_DISTANCE = 8;
 
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
@@ -23,6 +25,9 @@ public class FollowEnemy : MonoBehaviour {
 	}
 
 	private void MoveTowardsPlayer() {
-		GetComponent<Rigidbody2D>().MovePosition(transform.position + (Player.Position - transform.position).normalized * speed * Time.deltaTime);
+        Vector3 distVect = Player.Position - transform.position;
+        if(distVect.magnitude < FOLLOW_DISTANCE){
+            GetComponent<Rigidbody2D>().MovePosition(transform.position + distVect.normalized * speed * Time.deltaTime);
+        }
 	}
 }
