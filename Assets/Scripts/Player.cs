@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
 		GetComponent<Rigidbody2D>().MovePosition(transform.position + movement * speed * Time.deltaTime);
 
 		if (Input.anyKey == false) {
-			anim.Play("New State");
+			anim.Play("idleDown");
 		}
 	}
 		
