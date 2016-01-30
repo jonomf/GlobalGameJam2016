@@ -12,6 +12,7 @@ public class FollowEnemy : MonoBehaviour {
 	Animator anim;
 
 	private Vector3 direction;
+	string dir = "down";
 
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -35,20 +36,42 @@ public class FollowEnemy : MonoBehaviour {
 	private void MoveTowardsPlayer() {
         Vector3 distVect = Player.Position - transform.position;
 		direction = (Player.Position - transform.position).normalized;
-		if (!(distVect.magnitude < FOLLOW_DISTANCE)) return;
+		if (!(distVect.magnitude < FOLLOW_DISTANCE)) {
+			this.IdleAnimate ();
+			return;
+		}
 		GetComponent<Rigidbody2D>().MovePosition(transform.position + distVect.normalized * speed * Time.deltaTime); float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
 		if (angle >= 45 && angle < 135) {
 			anim.Play("enemyUp");
+			dir = "up";
 		}
 		else if ((angle >= 135 && angle <= 180) || (angle <= -135 && angle >= -180)) {
 			anim.Play("enemyLeft");
+			dir = "left";
 		}
 		else if (angle <= -45 && angle > -135) {
 			anim.Play("enemyDown");
+			dir = "down";
 		}
 		else {
 			anim.Play("enemyRight");
+			dir = "right";
 		}
+	}
+
+	private void IdleAnimate() {
+		if (dir == "down") {
+			anim.Play ("eIdleDown");
+		}
+		else if (dir == "up") {
+			anim.Play ("eIdleUp");
+		}
+		else if (dir == "right") {
+			anim.Play ("eIdleRight");
+		}
+		else if (dir == "left") {
+			anim.Play ("eIdleLeft");
+		} 
 	}
 }
