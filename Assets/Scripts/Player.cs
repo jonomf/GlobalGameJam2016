@@ -50,32 +50,28 @@ public class Player : MonoBehaviour {
 		GetComponent<Rigidbody2D>().MovePosition(transform.position + movement * speed * Time.deltaTime);
 	}
 
+	private Vector3 shootAngle;
 	private void Attack() {
+		shootAngle = Vector3.zero;
 		if (Input.GetKey(KeyCode.UpArrow)){
-			arrowReticle.position = transform.position + Vector3.up * arrowReticleDistance;
+			shootAngle += Vector3.up;
 		} else if (Input.GetKey(KeyCode.DownArrow)){
-			arrowReticle.position = transform.position + Vector3.down * arrowReticleDistance;
+			shootAngle += Vector3.down;
 		}
 		if (Input.GetKey(KeyCode.LeftArrow)){
-			arrowReticle.position = transform.position + Vector3.left * arrowReticleDistance;
+			shootAngle += Vector3.left;
 		} else if (Input.GetKey(KeyCode.RightArrow)){
-			arrowReticle.position = transform.position + Vector3.right * arrowReticleDistance;
+			shootAngle += Vector3.right;
 		}
+		arrowReticle.position = transform.position + shootAngle * arrowReticleDistance;
 
-		if (Input.GetKeyUp(KeyCode.UpArrow)){
-			ShootArrow(Vector3.up);
-		} else if (Input.GetKeyUp(KeyCode.DownArrow)){
-			ShootArrow(Vector3.down);
-		}
-		if (Input.GetKeyUp(KeyCode.LeftArrow)){
-			ShootArrow(Vector3.left);
-		} else if (Input.GetKeyUp(KeyCode.RightArrow)){
-			ShootArrow(Vector3.right);
+		if (Input.GetKeyDown(KeyCode.Space)){
+			ShootArrow(shootAngle);
 		}
 	}
 
 	private void ShootArrow(Vector3 direction) {
-		Rigidbody2D arrowRb = (Instantiate(arrowPrefab, transform.position + direction, Quaternion.Euler(direction)) as GameObject).GetComponent<Rigidbody2D>();
+		Rigidbody2D arrowRb = (Instantiate(arrowPrefab, transform.position, Quaternion.Euler(direction)) as GameObject).GetComponent<Rigidbody2D>();
 		arrowRb.AddForce(direction * arrowForce);
 		arrowReticle.position = Offscreen;
 	}
