@@ -2,9 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIController_AggressionBoss : UIContoller {
+public class UIController_AggressionBoss : MonoBehaviour {
 
-	public new static UIController_AggressionBoss instance;
+	public static UIController_AggressionBoss instance;
 
 	public Text secondsLeftText;
 

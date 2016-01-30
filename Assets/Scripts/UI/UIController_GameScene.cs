@@ -2,9 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class UIController_GameScene : UIContoller {
+public class UIController_GameScene : MonoBehaviour {
 
-	public new static UIController_GameScene instance;
+	public static UIController_GameScene instance;
 
 	public Slider boss1Slider;
 	public Slider boss2Slider;
