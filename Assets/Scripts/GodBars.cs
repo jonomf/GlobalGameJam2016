@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 //manages "happiness" bars for the 3 gods
 public class GodManager : MonoBehaviour {
@@ -11,6 +12,15 @@ public class GodManager : MonoBehaviour {
 
     public const int BUFF_TARGET = 75;
     public const int HATE_TARGET = 25;
+
+    public const float DECREASE_SECONDS = 1;
+
+    public static IEnumerator DecreaseOnTimer() {
+        while (true){
+            yield return new WaitForSeconds(DECREASE_SECONDS);
+            decreaseBars();
+        }
+    }
     
     //UPDATE 3 bars by specified bars (called by player/enemy functions)
     public static void updateBars(int d1, int d2, int d3){
@@ -18,26 +28,20 @@ public class GodManager : MonoBehaviour {
         bar2Value += d2;
         bar3Value += d3;
 
-        checkEndGame();
         updateSliders();
     }
 
-    void Update(){
-
-    }
-
     //Decrease all bars by 1 (called at some regular interval)
-    public static void decreaseBars(){
+    private static void decreaseBars(){
         bar1Value--;
         bar2Value--;
         bar3Value--;
 
-        checkEndGame();
         updateSliders();
     }
 
     //If a bar has hit 0 or 100, end the game
-    private static bool checkEndGame(){
+    public static bool checkEndGame(){
         if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
             //Start End Game process
             return true;

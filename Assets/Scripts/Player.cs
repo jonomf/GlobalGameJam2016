@@ -40,7 +40,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
-		inputDevice = InputManager.ActiveDevice;
+		if(GodManager.checkEndGame()){
+            Die();
+        }
+        inputDevice = InputManager.ActiveDevice;
 		Move();
 		Attack();
 	}
