@@ -3,26 +3,36 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	[Header("Settings")]
 	public float speed;
-	
+	[Header("Audio")]
+	public AudioSource collectAudio;
+	[Header("References")]
+	public GameObject arrowPrefab;
+
+	private Vector3 movement;
+
 	void Update () {
-		if (Input.GetKey(KeyCode.UpArrow)) {
-			transform.position += Vector3.up * speed * Time.deltaTime;
+		movement = Vector3.zero;
+		if (Input.GetKey(KeyCode.W)){
+			movement += Vector3.up;
 		}
-		else if (Input.GetKey(KeyCode.DownArrow)) {
-			transform.position += Vector3.down * speed * Time.deltaTime;
+		else if (Input.GetKey(KeyCode.S)){
+			movement += Vector3.down;
 		}
-		if (Input.GetKey(KeyCode.RightArrow)) {
-			transform.position += Vector3.right * speed * Time.deltaTime;
+		if (Input.GetKey(KeyCode.D)){
+			movement += Vector3.right;
 		}
-		else if (Input.GetKey(KeyCode.LeftArrow)) {
-			transform.position += Vector3.left * speed * Time.deltaTime;
+		else if (Input.GetKey(KeyCode.A)){
+			movement += Vector3.left;
 		}
+		GetComponent<Rigidbody2D>().MovePosition(transform.position + movement * speed * Time.deltaTime);
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject.layer == 8){
-			Destroy(other.gameObject);
+	void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.layer == Layers.CollectableNum){
+			Destroy(collision.gameObject);
+			collectAudio.Play();
 		}
 	}
 }
