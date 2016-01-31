@@ -73,7 +73,7 @@ public class Boss_Serenity : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.layer == Layers.PlayerArrowNum){
-			GetHurt();
+            GetHurt(Player.instance.getAttack());
 		}
 	}
 
@@ -102,7 +102,8 @@ public class Boss_Serenity : MonoBehaviour {
 	}
 
 	private void GetHurt(float damage = 1f) {
-		if (state == State.Waiting){
+		Debug.Log(damage);
+        if (state == State.Waiting){
 			state = State.Backup;
 		}
 		Health -= damage;
