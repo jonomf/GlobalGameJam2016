@@ -1,9 +1,41 @@
 fileFormatVersion: 2
-guid: 7155745c81beb2347b3100b4e2f7ee61
-timeCreated: 1454204650
-licenseType: Pro
+guid: 7b0152fd352715b4aadb6a0938499287
+timeCreated: 1454204172
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Sprite Sheet - Walking_0
+    21300002: Sprite Sheet - Walking_1
+    21300004: Sprite Sheet - Walking_2
+    21300006: Sprite Sheet - Walking_3
+    21300008: Sprite Sheet - Walking_4
+    21300010: Sprite Sheet - Walking_5
+    21300012: Sprite Sheet - Walking_6
+    21300014: Sprite Sheet - Walking_7
+    21300016: Sprite Sheet - Walking_8
+    21300018: Sprite Sheet - Walking_9
+    21300020: Sprite Sheet - Walking_10
+    21300022: Sprite Sheet - Walking_11
+    21300024: Sprite Sheet - Walking_12
+    21300026: Sprite Sheet - Walking_13
+    21300028: Sprite Sheet - Walking_14
+    21300030: Sprite Sheet - Walking_15
+    21300032: Sprite Sheet - Walking_16
+    21300034: Sprite Sheet - Walking_17
+    21300036: Sprite Sheet - Walking_18
+    21300038: Sprite Sheet - Walking_19
+    21300040: Sprite Sheet - Walking_20
+    21300042: Sprite Sheet - Walking_21
+    21300044: Sprite Sheet - Walking_22
+    21300046: Sprite Sheet - Walking_23
+    21300048: Sprite Sheet - Walking_24
+    21300050: Sprite Sheet - Walking_25
+    21300052: Sprite Sheet - Walking_26
+    21300054: Sprite Sheet - Walking_27
+    21300056: Sprite Sheet - Walking_28
+    21300058: Sprite Sheet - Walking_29
+    21300060: Sprite Sheet - Walking_30
+    21300062: Sprite Sheet - Walking_31
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,26 +62,378 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Sprite Sheet - Walking_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_2
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_3
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_6
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_7
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 455
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_9
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_10
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_11
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_12
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_13
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_14
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_15
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 391
+        width: 25
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_16
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 327
+        width: 22
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_17
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 327
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_18
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 327
+        width: 23
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_19
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 327
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_20
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 263
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_21
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 263
+        width: 23
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_22
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 263
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_23
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 263
+        width: 22
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_24
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 199
+        width: 24
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_25
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 199
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_26
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 199
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_27
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 199
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_28
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 135
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_29
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 135
+        width: 27
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_30
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 135
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Walking_31
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 135
+        width: 24
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     outline: []
   spritePackingTag: 
   userData: 
