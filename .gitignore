@@ -1,6 +1,6 @@
 Library/*
 Temp/*
-Builds/*
+Build/*
 obj/*
 *.csproj
 *.unityproj
