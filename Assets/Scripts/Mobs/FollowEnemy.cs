@@ -5,7 +5,7 @@ using System.Collections;
 public class FollowEnemy : MonoBehaviour {
 
 	public float speed = 3;
-	public float damage = 10;
+	public float damage = 20;//dealt to player
 
     public const int FOLLOW_DISTANCE = 8;
     
@@ -28,7 +28,7 @@ public class FollowEnemy : MonoBehaviour {
 		}
 		if (other.gameObject.layer == Layers.PlayerNum){
 			Destroy(gameObject);
-			Player.GetHurt(damage);
+            Player.GetHurt(20);
 		}
 	}
 
@@ -56,8 +56,8 @@ public class FollowEnemy : MonoBehaviour {
 		}
 	}
 
-    public void GetHurt(int damage = 1) {
-        Health -= damage;
+    public void GetHurt(int dmg = 1) {
+        Health -= dmg;
         GodManager.updateBars(2,-1,0);
         if (Health <= 0){
             Destroy(gameObject);

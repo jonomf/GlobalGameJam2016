@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 //manages "happiness" bars for the 3 gods
 public class GodManager : MonoBehaviour {
@@ -28,6 +29,7 @@ public class GodManager : MonoBehaviour {
         bar2Value += d2;
         bar3Value += d3;
 
+        checkEndGame();
         updateSliders();
     }
 
@@ -37,16 +39,15 @@ public class GodManager : MonoBehaviour {
         bar2Value--;
         bar3Value--;
 
+        checkEndGame();
         updateSliders();
     }
 
     //If a bar has hit 0 or 100, end the game
-    public static bool checkEndGame(){
+    public static void checkEndGame(){
         if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
-            //Start End Game process
-            return true;
+            SceneManager.LoadScene("Win");
         }
-        return false;
     }
 
     //updates the actual sliders

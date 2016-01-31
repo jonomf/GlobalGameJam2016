@@ -41,9 +41,6 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
-		if(GodManager.checkEndGame()){
-            Die();
-        }
         inputDevice = InputManager.ActiveDevice;
 		Move();
 		Attack();
@@ -183,7 +180,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public static void GetHurt(float damage = 5f) {
-		Health -= damage;
+        Health -= damage;
 		UIContoller.UpdatePlayerHealth();
         GodManager.updateBars(0,1,0);
 		if (Health <= 0){
@@ -192,6 +189,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public static void Die() {
-		SceneManager.LoadScene("Lose");
+        SceneManager.LoadScene("Lose");
 	}
 }
