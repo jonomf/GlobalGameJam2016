@@ -16,9 +16,9 @@ public class GodManager : MonoBehaviour {
 
     private bool stopChange = false;
 
-    public static bool applyBuff1 = false;
+	public static bool applyBuff1 = false;
     public static bool applyBuff2 = false;
-    public static bool applyBuff3 = false;
+	public static bool applyBuff3 = false;
 
     public static bool applyPenalty1 = false;
     public static bool applyPenalty2 = false;
