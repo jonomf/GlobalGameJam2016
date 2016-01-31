@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7b0152fd352715b4aadb6a0938499287
-timeCreated: 1454201298
+timeCreated: 1454204172
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -90,7 +90,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_1
@@ -101,7 +101,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_2
@@ -112,7 +112,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_3
@@ -123,7 +123,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_4
@@ -134,7 +134,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_5
@@ -145,38 +145,20 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_6
       rect:
         serializedVersion: 2
-        x: 391
+        x: 404
         y: 455
-        width: 38
+        width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -6, y: 26.5}
-        - {x: -8, y: 23.5}
-        - {x: -8, y: -13.5}
-        - {x: -7, y: -26.5}
-        - {x: 18, y: -26.5}
-        - {x: 19, y: -23.5}
-        - {x: 19, y: 26.5}
-      - - {x: -18, y: -14.5}
-        - {x: -15, y: -12.5}
-        - {x: -17, y: -7.5}
-        - {x: -19, y: -7.5}
-        - {x: -19, y: -13.5}
-      - - {x: -19, y: -1.5}
-        - {x: -18, y: -2.5}
-        - {x: -15, y: -1.5}
-        - {x: -15, y: 1.5}
-        - {x: -18, y: 2.5}
-        - {x: -19, y: 1.5}
+      outline: []
     - name: Sprite Sheet - Walking_7
       rect:
         serializedVersion: 2
@@ -185,7 +167,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_8
@@ -196,7 +178,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_9
@@ -207,7 +189,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_10
@@ -218,7 +200,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_11
@@ -229,7 +211,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_12
@@ -240,7 +222,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_13
@@ -251,7 +233,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_14
@@ -262,7 +244,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_15
@@ -273,7 +255,7 @@ TextureImporter:
         width: 25
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_16
@@ -284,7 +266,7 @@ TextureImporter:
         width: 22
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_17
@@ -295,7 +277,7 @@ TextureImporter:
         width: 29
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_18
@@ -306,7 +288,7 @@ TextureImporter:
         width: 23
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_19
@@ -317,7 +299,7 @@ TextureImporter:
         width: 29
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_20
@@ -328,7 +310,7 @@ TextureImporter:
         width: 29
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_21
@@ -339,7 +321,7 @@ TextureImporter:
         width: 23
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_22
@@ -350,7 +332,7 @@ TextureImporter:
         width: 29
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_23
@@ -361,7 +343,7 @@ TextureImporter:
         width: 22
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_24
@@ -372,7 +354,7 @@ TextureImporter:
         width: 24
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_25
@@ -383,7 +365,7 @@ TextureImporter:
         width: 30
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_26
@@ -394,7 +376,7 @@ TextureImporter:
         width: 28
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_27
@@ -405,7 +387,7 @@ TextureImporter:
         width: 30
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_28
@@ -416,7 +398,7 @@ TextureImporter:
         width: 30
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_29
@@ -427,7 +409,7 @@ TextureImporter:
         width: 27
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_30
@@ -438,7 +420,7 @@ TextureImporter:
         width: 30
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Walking_31
@@ -449,7 +431,7 @@ TextureImporter:
         width: 24
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []

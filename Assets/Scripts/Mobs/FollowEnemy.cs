@@ -17,6 +17,8 @@ public class FollowEnemy : MonoBehaviour {
 	private Vector3 direction;
 	string dir = "down";
 
+	bool facingLeft = true;
+
 	void Start () {
 		anim = GetComponent<Animator> ();
         Health = STARTING_HEALTH;
@@ -86,4 +88,5 @@ public class FollowEnemy : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+		
 }

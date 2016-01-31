@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 9b3c4d6c73f76b449856dd696ab8f25b
-timeCreated: 1454201257
+timeCreated: 1454205073
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,8 @@ TextureImporter:
     21300010: Sprite Sheet - Monsters_5
     21300012: Sprite Sheet - Monsters_6
     21300014: Sprite Sheet - Monsters_7
+    21300016: Sprite Sheet - Monsters_8
+    21300018: Sprite Sheet - Monsters_9
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -61,8 +63,8 @@ TextureImporter:
     - name: Sprite Sheet - Monsters_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 57
+        x: 5
+        y: 54
         width: 25
         height: 39
       alignment: 0
@@ -72,8 +74,8 @@ TextureImporter:
     - name: Sprite Sheet - Monsters_1
       rect:
         serializedVersion: 2
-        x: 57
-        y: 57
+        x: 53
+        y: 54
         width: 25
         height: 39
       alignment: 0
@@ -83,8 +85,8 @@ TextureImporter:
     - name: Sprite Sheet - Monsters_2
       rect:
         serializedVersion: 2
-        x: 105
-        y: 57
+        x: 101
+        y: 54
         width: 25
         height: 39
       alignment: 0
@@ -94,21 +96,21 @@ TextureImporter:
     - name: Sprite Sheet - Monsters_3
       rect:
         serializedVersion: 2
-        x: 153
-        y: 57
+        x: 149
+        y: 53
         width: 25
-        height: 39
+        height: 40
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     - name: Sprite Sheet - Monsters_4
       rect:
         serializedVersion: 2
-        x: 9
-        y: 9
+        x: 198
+        y: 53
         width: 25
-        height: 39
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,34 +118,56 @@ TextureImporter:
     - name: Sprite Sheet - Monsters_5
       rect:
         serializedVersion: 2
-        x: 56
-        y: 9
-        width: 26
-        height: 39
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: Sprite Sheet - Monsters_6
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 9
+        x: 5
+        y: 6
         width: 25
         height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+    - name: Sprite Sheet - Monsters_6
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 6
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: Sprite Sheet - Monsters_7
       rect:
         serializedVersion: 2
-        x: 151
-        y: 9
+        x: 101
+        y: 6
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Monsters_8
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 6
         width: 27
         height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: Sprite Sheet - Monsters_9
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 6
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
     outline: []
