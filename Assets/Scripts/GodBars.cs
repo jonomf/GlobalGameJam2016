@@ -23,6 +23,7 @@ public class GodManager : MonoBehaviour {
     
     //UPDATE 3 bars by specified bars (called by player/enemy functions)
     public static void updateBars(int d1, int d2, int d3){
+		if (SceneManager.GetActiveScene().name != "Game scene") return;
         bar1Value += d1;
         bar2Value += d2;
         bar3Value += d3;
