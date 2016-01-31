@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Child : MonoBehaviour {
 
-	public static bool ChildHeld { get; private set; }
+	public static bool ChildHeld { get; private set; }//for player
+    public static Child currentChild;
+    public bool isHeld = false;
 
     public const int STARTING_HEALTH = 3;
     public int Health { get; private set; }
@@ -16,7 +18,9 @@ public class Child : MonoBehaviour {
 		if (other.gameObject.layer == Layers.PlayerNum){
 			if (!ChildHeld){
 				ChildHeld = true;
-				Destroy(gameObject);
+                isHeld = true;
+                currentChild = this;
+                //transform.SetParent(other.transform);
 			}
 		}
         else if (other.gameObject.layer == Layers.PlayerArrowNum){
@@ -25,6 +29,12 @@ public class Child : MonoBehaviour {
         }
 	}
 
+    void Update(){
+        if(isHeld){
+            GetComponent<Rigidbody2D>().position = Player.Position;
+        }
+    }
+
     void Die(){
         GodManager.updateBars(5,-10,0);
         Destroy(gameObject);
@@ -32,6 +42,7 @@ public class Child : MonoBehaviour {
 
 	public static void ChildCollected() {
 		ChildHeld = false;
+        Child.currentChild.Die();
 		AudioController.instance.childDropOff.Play();
         GodManager.updateBars(-10,30,0);
 	}
