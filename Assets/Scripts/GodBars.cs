@@ -46,7 +46,7 @@ public class GodManager : MonoBehaviour {
     //If a bar has hit 0 or 100, end the game
     public static void checkEndGame(){
         if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
-            GameController.Lose();
+            GameController.Win();
         }
     }
 
