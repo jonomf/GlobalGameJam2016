@@ -9,8 +9,8 @@ public class Boss_Serenity : MonoBehaviour {
 	private static Animator anim;
 	private static SpriteRenderer spriteRenderer;
 
-	static bool phase2 = false;
-	static bool phase3 = false;
+	bool phase2 = false;
+	bool phase3 = false;
 
 	public float surviveTime = 15f;
 	public float startingHealth = 100;
@@ -70,7 +70,7 @@ public class Boss_Serenity : MonoBehaviour {
 		} else if (RemainingTime <= 10 && !hasShownTimeWarning){
 			hasShownTimeWarning = true;
 			FeedbackPopup.DoPopup("Runnning out of time!!", Color.red, 0);
-			FeedbackPopup.DoPopup("Get her!!", Color.red, 0);
+			FeedbackPopup.DoPopup("Get her!!", Color.red, 1);
 		}
 		if ((Player.Position - transform.position).magnitude > maxDistance){
 			state = State.Waiting;
