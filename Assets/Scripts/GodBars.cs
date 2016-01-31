@@ -39,6 +39,10 @@ public class GodManager : MonoBehaviour {
         bar2Value += d2;
         bar3Value += d3;
 
+	    if (bar1Value < HATE_TARGET || bar2Value < HATE_TARGET || bar3Value < HATE_TARGET){
+		    AudioController.instance.godWarning.Play();
+	    }
+
         checkEndGame();
         updateSliders();
     }

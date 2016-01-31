@@ -12,8 +12,6 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public float arrowForce = 1000;
 	public float arrowReticleDistance = 2f;
-	[Header("Audio")]
-	public AudioSource collectAudio;
 	[Header("References")]
 	public GameObject arrowPrefab;
 	public GameObject arrowReticlePrefab;
@@ -168,13 +166,13 @@ public class Player : MonoBehaviour {
 		Rigidbody2D arrowRb = (Instantiate(arrowPrefab, transform.position, Quaternion.Euler(direction)) as GameObject).GetComponent<Rigidbody2D>();
 		arrowRb.AddForce(direction * arrowForce);
 		arrowReticle.position = Offscreen;
-
+		AudioController.instance.arrowShots[Random.Range(0, AudioController.instance.arrowShots.Length - 1)].Play();
         //GodManager.updateBars(1,-1,0);
 	}
 
 	public static void Collect(GameObject obj) {
 		Destroy(obj);
-		instance.collectAudio.Play();
+		AudioController.instance.collect.Play();
         GodManager.updateBars(0,0,3);
 	}
 

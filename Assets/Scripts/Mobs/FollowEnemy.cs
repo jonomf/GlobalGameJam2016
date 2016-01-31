@@ -85,7 +85,11 @@ public class FollowEnemy : MonoBehaviour {
         Health -= dmg;
         GodManager.updateBars(2,-1,0);
         if (Health <= 0){
+			AudioController.instance.enemyDead.Play();
             Destroy(gameObject);
+        }
+        else{
+	        AudioController.instance.enemyLoseHealth.Play();
         }
     }
 		

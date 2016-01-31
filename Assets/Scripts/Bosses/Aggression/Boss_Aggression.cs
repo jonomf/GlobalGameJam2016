@@ -77,5 +77,7 @@ public class Boss_Aggression : MonoBehaviour {
 			rb.AddForce((xNotY ? Vector2.right : Vector2.up) * (shootPositiveDir ? 1 : -1) * shotForce[stage]);
 			rb.AddForce((xNotY ? Vector2.up : Vector2.right) * -250);
 		}
+
+		AudioController.instance.fireball[Random.Range(0, AudioController.instance.fireball.Length - 1)].Play();
 	}
 }

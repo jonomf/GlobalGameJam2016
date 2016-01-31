@@ -83,6 +83,7 @@ public class Boss_Serenity : MonoBehaviour {
 			state = State.Walldrop;
 			yield return new WaitForSeconds(wallDropPause);
 			Instantiate(wallPrefab, transform.position + transform.right * -2, transform.rotation * Quaternion.Euler(Vector3.forward * 90));
+			AudioController.instance.clawSwipes[Random.Range(0, AudioController.instance.clawSwipes.Length - 1)].Play();
 			state = State.FastBackup;
 			yield return new WaitForSeconds(wallDropFastBackupLength);
 			state = State.Backup;
