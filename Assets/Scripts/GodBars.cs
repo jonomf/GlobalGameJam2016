@@ -49,8 +49,8 @@ public class GodManager : MonoBehaviour {
     //Decrease all bars by 1 (called at some regular interval)
     public static void decreaseBars(){
         if (SceneManager.GetActiveScene().name != "Game scene") return;
-        bar1Value--;
-        bar2Value--;
+     //   bar1Value--;
+    //    bar2Value--;
         bar3Value -= 3; //TEMP
 
         checkEndGame();

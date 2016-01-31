@@ -5,13 +5,17 @@ public class Relic : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerNum) {
-			Player.GetHurt (-10);
+			Player.AddHealth (10);
 			Player.CheckHealth ();
 			Boss_Greed.Regenerate ();
-			Boss_Greed.CheckHealth();
-			Boss_Greed.drainSpeed += 0.1f;
-			Boss_Greed.damageBuff *= 0.95f;
+			Boss_Greed.CheckHealth ();
+			Boss_Greed.instance.drainSpeed += Boss_Greed.instance.drainIncrease;
+			Boss_Greed.instance.damage *= Boss_Greed.instance.damRes;
 		} 
+
+		else {
+			Destroy (other.gameObject);
+		}
 
 		Destroy (gameObject);
 	}
