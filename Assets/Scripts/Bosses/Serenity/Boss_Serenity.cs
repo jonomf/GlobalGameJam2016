@@ -11,6 +11,10 @@ public class Boss_Serenity : MonoBehaviour {
 	public float speed = 1;
 	public float maxDistance = 15;
 	public float resumeAgainDistance = 6;
+	[Header("Little drops")]
+	public GameObject littleDropPrefab;
+	public float littleDropPeriod = 0.75f;
+	public float littleDropLateralRange = 2f;
 	[Header("Wall drop")]
 	public GameObject wallPrefab;
 	public float walldropDelay = 3f;
@@ -31,6 +35,7 @@ public class Boss_Serenity : MonoBehaviour {
 		Health = startingHealth;
 		UIController_SerenityBoss.instance.bossHealthSlider.maxValue = Health;
 		StartCoroutine(WalldropAfterDelay());
+		StartCoroutine(LittleDropDuringBackup());
 	}
 
 	void Update() {
@@ -75,6 +80,18 @@ public class Boss_Serenity : MonoBehaviour {
 			state = State.FastBackup;
 			yield return new WaitForSeconds(wallDropFastBackupLength);
 			state = State.Backup;
+		}
+	}
+
+	private IEnumerator LittleDropDuringBackup() {
+		while (true){
+			yield return new WaitForSeconds(littleDropPeriod);
+			if (state == State.Backup){
+				Instantiate(littleDropPrefab,
+					transform.position + transform.right * -2 +
+					Vector3.up * Random.Range(-littleDropLateralRange, littleDropLateralRange),
+					transform.rotation * Quaternion.Euler(Vector3.forward * 90));
+			}
 		}
 	}
 
