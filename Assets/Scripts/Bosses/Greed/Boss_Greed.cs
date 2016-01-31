@@ -20,7 +20,7 @@ public class Boss_Greed : MonoBehaviour {
 	private static float MaxHealth;
 	public Transform bossMove;
 
-	public float damage = 50;
+	public float damage = Player.instance.getAttack() * 50;
 	public float damRes = 0.95f;
 
 	static bool halfHealth = false;
