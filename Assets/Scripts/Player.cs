@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 	public static Vector3 Position { get { return instance.transform.position; } }
 
 	public static float Health { get; private set; }
+	public static float MaxHealth;
 
 	private Transform arrowReticle;
 	private Vector3 movement;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour {
 		arrowReticle = (Instantiate(arrowReticlePrefab, Offscreen, Quaternion.identity) as GameObject).transform;
 		anim = GetComponent<Animator> ();
 		Health = startingHealth;
+		MaxHealth = Health;
 		UIContoller.UpdatePlayerHealth();
 	}
 
@@ -186,4 +188,11 @@ public class Player : MonoBehaviour {
 		if (Health <= 0){
 			GameController.Lose();
 		}
-	}}
+	}
+
+	public static void CheckHealth () {
+		if (Health > MaxHealth) {
+			Health = MaxHealth;
+		}
+	}
+}

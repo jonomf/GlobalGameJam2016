@@ -13,8 +13,11 @@ public class Boss_Greed : MonoBehaviour {
 
 	[Header("Settings")]
 	public float startingHealth = 500;
-	public float drainSpeed = 0.1f;
+	public static float drainSpeed = 0.1f;
+	private static float MaxHealth;
 	public Transform bossMove;
+
+	public static float damageBuff = 50;
 
 	static bool halfHealth = false;
 
@@ -23,6 +26,7 @@ public class Boss_Greed : MonoBehaviour {
 	void Start () {
 		instance = this;
 		Health = startingHealth;
+		MaxHealth = Health;
 
 	}
 
@@ -43,7 +47,7 @@ public class Boss_Greed : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
 			Destroy(other.gameObject);
-			GetHurt ();
+			GetHurt (damageBuff);
 		}
 	}
 
@@ -66,6 +70,12 @@ public class Boss_Greed : MonoBehaviour {
 		instance.transform.localScale = new Vector2 (42, 35);
 		instance.transform.position = instance.bossMove.position;
 		instance.collectablesGroup.SetActive(true);
+	}
+
+	public static void CheckHealth () {
+		if (Health > MaxHealth) {
+			Health = MaxHealth;
+		}
 	}
 
 }
