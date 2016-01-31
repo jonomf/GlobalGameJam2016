@@ -44,6 +44,7 @@ public class Boss_Aggression : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
 			surviveTime += surviveTimeAddedPerHit;
+			FeedbackPopup.DoPopup("+Time", Color.red, 0);
 			Destroy(other.gameObject);
 		}
 	}

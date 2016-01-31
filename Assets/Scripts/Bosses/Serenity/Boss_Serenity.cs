@@ -35,6 +35,7 @@ public class Boss_Serenity : MonoBehaviour {
 
 	private enum State { Backup, Walldrop, FastBackup, Waiting }
 	private State state = State.Backup;
+	private bool hasShownTimeWarning;
 
 	void Start() {
 		instance = this;
@@ -66,6 +67,10 @@ public class Boss_Serenity : MonoBehaviour {
 		}
 		if (RemainingTime <= 0){
 			GameController.Lose();
+		} else if (RemainingTime <= 10 && !hasShownTimeWarning){
+			hasShownTimeWarning = true;
+			FeedbackPopup.DoPopup("Runnning out of time!!", Color.red, 0);
+			FeedbackPopup.DoPopup("Get her!!", Color.red, 0);
 		}
 		if ((Player.Position - transform.position).magnitude > maxDistance){
 			state = State.Waiting;

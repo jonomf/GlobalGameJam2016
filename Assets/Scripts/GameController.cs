@@ -6,7 +6,10 @@ public class GameController : MonoBehaviour {
 
 	public static GameController instance;
 
-    void Awake () {
+	public GameObject feedbackPopupPrefab;
+	public AnimationClip feedbackPopupAnimClip;
+
+	void Awake () {
 		instance = this;
         Layers.Init();
 	    if (SceneManager.GetActiveScene().name == "Game scene"){

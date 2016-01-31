@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 //manages "happiness" bars for the 3 gods
 public class GodManager : MonoBehaviour {
-	
+
 	public static int bar1Value = 50;//Aggression
     public static int bar2Value = 50;//Serenity
     public static int bar3Value = 50;//Collection
@@ -42,19 +42,38 @@ public class GodManager : MonoBehaviour {
 		    AudioController.instance.godWarning.Play();
 	    }
 
+		DoBarChangePopup(d1, d2, d3);
         checkEndGame();
         updateSliders();
     }
 
+	private static void DoBarChangePopup(int dAggro, int dSerenity, int dGreed) {
+		int popupNum = 0;
+		if (dAggro > 0) {
+			// NB: For some reason, using a variable for the color doesn't work.
+			FeedbackPopup.DoPopup("+", Color.red, popupNum++);
+		}
+		else if (dAggro < 0) {
+			FeedbackPopup.DoPopup("-", Color.red, popupNum++);
+		}
+		if (dSerenity > 0) {
+			FeedbackPopup.DoPopup("+", Color.blue, popupNum++);
+		}
+		else if (dSerenity< 0) {
+			FeedbackPopup.DoPopup("-", Color.blue, popupNum++);
+		}
+		if (dGreed> 0) {
+			FeedbackPopup.DoPopup("+", Color.green, popupNum++);
+		}
+		else if (dGreed < 0) {
+			FeedbackPopup.DoPopup("-", Color.green, popupNum++);
+		}
+	}
+
     //Decrease all bars by 1 (called at some regular interval)
     public static void decreaseBars(){
         if (SceneManager.GetActiveScene().name != "Game scene") return;
-        bar1Value--;
-        bar2Value--;
-        bar3Value -= 3; //TEMP
-
-        checkEndGame();
-        updateSliders();
+		updateBars(0, 0, -3);
     }
 
     //If a bar has hit 0 or 100, end the game
