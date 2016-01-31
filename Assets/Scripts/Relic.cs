@@ -5,6 +5,7 @@ public class Relic : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerNum) {
+			Destroy (gameObject);
 			Player.AddHealth (10);
 			Player.CheckHealth ();
 			Boss_Greed.Regenerate ();
@@ -17,6 +18,6 @@ public class Relic : MonoBehaviour {
 			Destroy (other.gameObject);
 		}
 
-		Destroy (gameObject);
+
 	}
 }
