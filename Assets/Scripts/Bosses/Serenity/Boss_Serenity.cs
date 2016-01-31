@@ -6,6 +6,11 @@ public class Boss_Serenity : MonoBehaviour {
 
 	public static Boss_Serenity instance;
 
+	private static Animator anim;
+
+	static bool phase2 = false;
+	static bool phase3 = false;
+
 	public float surviveTime = 15f;
 	public float startingHealth = 100;
 	public float speed = 1;
@@ -34,6 +39,7 @@ public class Boss_Serenity : MonoBehaviour {
 		instance = this;
 		Health = startingHealth;
 		UIController_SerenityBoss.instance.bossHealthSlider.maxValue = Health;
+		anim = GetComponent<Animator> ();
 		StartCoroutine(WalldropAfterDelay());
 		StartCoroutine(LittleDropDuringBackup());
 	}
@@ -101,8 +107,24 @@ public class Boss_Serenity : MonoBehaviour {
 		}
 		Health -= damage;
 		UIController_SerenityBoss.UpdateBossHealth();
+		if (Health < startingHealth * 0.67f && phase2 == false) {
+			phase2 = true;
+			SetPhase2 ();
+		}
+		if (Health < startingHealth * 0.33f && phase3 == false) {
+			phase3 = true;
+			SetPhase3 ();
+		}
 		if (Health <= 0){
 			GameController.Win();
 		}
+	}
+
+	static void SetPhase2 () {
+		anim.Play ("Serenity_Phase_2");
+	}
+
+	static void SetPhase3 () {
+		anim.Play ("Serenity_Phase_3");
 	}
 }

@@ -7,8 +7,8 @@ public class Relic : MonoBehaviour {
 		if (other.gameObject.layer == Layers.PlayerNum) {
 			Player.GetHurt (-10);
 			Boss_Greed.Regenerate ();
-		} else {
-			Destroy (gameObject);
-		}
+		} 
+
+		Destroy (gameObject);
 	}
 }
