@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 	public float arrowForce = 1000;
 	public float arrowReticleDistance = 2f;
 	[Header("Audio")]
-	public static AudioSource collectAudio;
+	public AudioSource collectAudio;
 	[Header("References")]
 	public GameObject arrowPrefab;
 	public GameObject arrowReticlePrefab;
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * 0.25f;
 			StartCoroutine(GetKnockedBack());
 			Destroy(collision.gameObject);
-			GetHurt();
+			GetHurt(20);
 		}
 	}
 
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour {
 
 	public static void Collect(GameObject obj) {
 		Destroy(obj);
-		collectAudio.Play();
+		instance.collectAudio.Play();
         GodManager.updateBars(0,0,3);
 	}
 
