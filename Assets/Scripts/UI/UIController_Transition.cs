@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController_Transition : MonoBehaviour {
 	public static UIController_Transition instance;
+
+    private InputDevice inputDevice;
 
     public Text aggressionText;
     public Text serenityText;
@@ -17,6 +21,7 @@ public class UIController_Transition : MonoBehaviour {
 
     void Awake() {
         instance = this;
+
         displayStats();
     }
 
@@ -58,6 +63,19 @@ public class UIController_Transition : MonoBehaviour {
     }
 
     void Update() {
-        //CHECK for input to change scene to correct Boss
+        //Check for A button to change scene to correct boss
+        inputDevice = InputManager.ActiveDevice;
+        if(Input.GetKeyDown(KeyCode.Space) || inputDevice.GetControl(InputControlType.Action1).WasPressed){
+            if(bossNum == 1){
+                SceneManager.LoadScene("Boss - Aggression");
+            }
+            else if(bossNum == 2){
+                SceneManager.LoadScene("Boss - Serenity");
+            }
+            else{
+                //Load Greed!
+                //SceneManager.LoadScene("Transition");
+            }
+        }
     }
 }
