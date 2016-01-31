@@ -7,6 +7,7 @@ public class Boss_Serenity : MonoBehaviour {
 	public static Boss_Serenity instance;
 
 	private static Animator anim;
+	private static SpriteRenderer spriteRenderer;
 
 	static bool phase2 = false;
 	static bool phase3 = false;
@@ -40,11 +41,36 @@ public class Boss_Serenity : MonoBehaviour {
 		Health = startingHealth;
 		UIController_SerenityBoss.instance.bossHealthSlider.maxValue = Health;
 		anim = GetComponent<Animator> ();
-		StartCoroutine(WalldropAfterDelay());
-		StartCoroutine(LittleDropDuringBackup());
+		spriteRenderer = GetComponent<SpriteRenderer> ();
 	}
 
 	void Update() {
+
+		if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("Phase_3_Block") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Phase_3_Attack")) {
+
+			if (!phase2 && !phase3) {
+				if (Player.Position.x > transform.position.x) {
+					anim.Play ("SerenityRight");
+					spriteRenderer.flipX = true;
+					spriteRenderer.flipY = true;
+				} else {
+					anim.Play ("Serenity");
+					spriteRenderer.flipX = false;
+					spriteRenderer.flipY = false;
+				}
+			}
+			else if (!phase2 && phase3) {
+				anim.Play ("Serenity_Phase_2");
+				if (Player.Position.x > transform.position.x) {
+					spriteRenderer.flipX = true;
+				} else {
+					spriteRenderer.flipX = false;
+				}
+			}
+			if (phase3) {
+				anim.Play ("Serenity_Phase_3");
+			}
+		}
 		if (RemainingTime <= 0){
 			GameController.Lose();
 		}
@@ -69,6 +95,7 @@ public class Boss_Serenity : MonoBehaviour {
 				GetComponent<Rigidbody2D>().MovePosition(transform.position + transform.right * wallDropFastBackupSpeed * Time.deltaTime);
 				break;
 		}
+
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
@@ -79,6 +106,9 @@ public class Boss_Serenity : MonoBehaviour {
 
 	private IEnumerator WalldropAfterDelay() {
 		while (true) {
+			if (phase3) {
+				anim.Play ("Phase_3_Attack");
+			}
 			yield return new WaitForSeconds(walldropDelay);
 			state = State.Walldrop;
 			yield return new WaitForSeconds(wallDropPause);
@@ -93,6 +123,11 @@ public class Boss_Serenity : MonoBehaviour {
 		while (true){
 			yield return new WaitForSeconds(littleDropPeriod);
 			if (state == State.Backup){
+				if (phase3) {
+					if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("Phase_3_Attack")) {
+						anim.Play ("Phase_3_Block");
+					}
+				}
 				Instantiate(littleDropPrefab,
 					transform.position + transform.right * -2 +
 					Vector3.up * Random.Range(-littleDropLateralRange, littleDropLateralRange),
@@ -107,11 +142,11 @@ public class Boss_Serenity : MonoBehaviour {
 		}
 		Health -= damage;
 		UIController_SerenityBoss.UpdateBossHealth();
-		if (Health < startingHealth * 0.67f && phase2 == false) {
+		if (Health < startingHealth * 0.95f && phase2 == false) {
 			phase2 = true;
 			SetPhase2 ();
 		}
-		if (Health < startingHealth * 0.33f && phase3 == false) {
+		if (Health < startingHealth * 0.5f && phase3 == false) {
 			phase3 = true;
 			SetPhase3 ();
 		}
@@ -120,11 +155,16 @@ public class Boss_Serenity : MonoBehaviour {
 		}
 	}
 
-	static void SetPhase2 () {
+	void SetPhase2 () {
 		anim.Play ("Serenity_Phase_2");
+		instance.StartCoroutine(instance.LittleDropDuringBackup());
+
+
 	}
 
-	static void SetPhase3 () {
+	void SetPhase3 () {
 		anim.Play ("Serenity_Phase_3");
+		instance.StartCoroutine(instance.WalldropAfterDelay());
+
 	}
 }
