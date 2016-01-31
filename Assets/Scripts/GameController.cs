@@ -22,6 +22,10 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+    public static void Transition(){
+        SceneManager.LoadScene("Transition");
+    }
+
 	public static void Win() {
 		SceneManager.LoadScene("Win");
 	}

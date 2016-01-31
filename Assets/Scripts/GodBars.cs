@@ -14,8 +14,18 @@ public class GodManager : MonoBehaviour {
 
     public const float DECREASE_SECONDS = 3;
 
+    private bool stopChange = false;
+
+    public static bool applyBuff1 = false;
+    public static bool applyBuff2 = false;
+    public static bool applyBuff3 = false;
+
+    public static bool applyPenalty1 = false;
+    public static bool applyPenalty2 = false;
+    public static bool applyPenalty3 = false;
+
     public static IEnumerator DecreaseOnTimer() {
-        while (true){
+        while (UIController_GameScene.instance != null){
             yield return new WaitForSeconds(DECREASE_SECONDS);
             decreaseBars();
         }
@@ -24,6 +34,7 @@ public class GodManager : MonoBehaviour {
     //UPDATE 3 bars by specified bars (called by player/enemy functions)
     public static void updateBars(int d1, int d2, int d3){
 		if (SceneManager.GetActiveScene().name != "Game scene") return;
+        if (UIController_GameScene.instance == null) return; // Not in the game scene.
         bar1Value += d1;
         bar2Value += d2;
         bar3Value += d3;
@@ -34,6 +45,7 @@ public class GodManager : MonoBehaviour {
 
     //Decrease all bars by 1 (called at some regular interval)
     private static void decreaseBars(){
+        if (UIController_GameScene.instance == null) return; // Not in the game scene.
         bar1Value--;
         bar2Value--;
         bar3Value--;
@@ -45,7 +57,7 @@ public class GodManager : MonoBehaviour {
     //If a bar has hit 0 or 100, end the game
     public static void checkEndGame(){
         if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
-            GameController.Win();
+            GameController.Transition();
         }
     }
 
@@ -72,44 +84,41 @@ public class GodManager : MonoBehaviour {
     }
 
     //Called at end-game. Apply buffs (not mutually exclusive)
-    private static void checkBuffs(){
-        if(bar1Value >= BUFF_TARGET){
-            //apply god1 buff
-        }
-        if(bar2Value >= BUFF_TARGET){
-            //apply god1 buff
-        }
-        if(bar3Value >= BUFF_TARGET){
-            //apply god1 buff
-        }
+    public static void checkBuffs(int bossNum){
+        applyBuff1 = bar1Value >= BUFF_TARGET && bossNum != 1;
+        applyBuff2 = bar2Value >= BUFF_TARGET && bossNum != 2;
+        applyBuff3 = bar3Value >= BUFF_TARGET && bossNum != 3;
     }
 
-    //Called at end-game. There can be multiple penalties but only ONE boss
-    private static void checkPenalties(){
-        int bossNum = 0;
-        
-        //FIRST - determine the boss
+    //Called at Transition - gets boss NUM based on transition values
+    public static int getBossNum(){
         //NOTE - <= gives preference to certain bosses
         if(bar1Value <= bar2Value){
             if(bar1Value <= bar3Value){
-                bossNum = 1;
+                return 1;
             }
             else{
-                bossNum = 3;
+                return 3;
             }
         }
         else{
             if(bar2Value <= bar3Value){
-                bossNum = 2;
+                return 2;
             }
             else{
-                bossNum = 3;
+                return 3;
             }
         }
+    }  
+
+    //There can be multiple penalties but only one Boss
+    private static void checkPenalties(){
+        int bossNum = getBossNum(); //TEMP!!
 
         //NEXT - determine any extra penalties 
         if(bar1Value < HATE_TARGET && bossNum != 1){
             //Do secondary penalty
+
         }
         if(bar2Value < HATE_TARGET && bossNum != 2){
             //Do secondary penalty
@@ -117,7 +126,5 @@ public class GodManager : MonoBehaviour {
         if(bar3Value < HATE_TARGET && bossNum != 3){
             //Do secondary penalty
         }
-
-        //We have the bossNum - DO BOSS STUFF!!
     }
 }
