@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour {
 		instance = this;
         Layers.Init();
 	    if (SceneManager.GetActiveScene().name == "Game scene"){
-            StartCoroutine(GodManager.DecreaseOnTimer());
+			GodManager.Reset();
+			StartCoroutine(GodManager.DecreaseOnTimer());
 		    StartCoroutine(GameSceneLoop());
 	    }
 	}

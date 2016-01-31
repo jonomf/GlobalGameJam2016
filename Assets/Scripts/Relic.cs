@@ -12,6 +12,7 @@ public class Relic : MonoBehaviour {
 			Boss_Greed.CheckHealth ();
 			Boss_Greed.instance.drainSpeed += Boss_Greed.instance.drainIncrease;
 			Boss_Greed.instance.damage *= Boss_Greed.instance.damRes;
+			FeedbackPopup.DoPopup("-HP", Color.red, 0);
 		} 
 
 		else {

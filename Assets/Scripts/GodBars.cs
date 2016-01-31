@@ -24,6 +24,11 @@ public class GodManager : MonoBehaviour {
     public static bool applyPenalty2 = false;
     public static bool applyPenalty3 = false;
 
+	public static void Reset() {
+		bar1Value = bar2Value = bar3Value = 50;
+		applyBuff1 = applyBuff2 = applyBuff3 = false;
+	}
+
     public static IEnumerator DecreaseOnTimer() {
         while (true){
             yield return new WaitForSeconds(DECREASE_SECONDS);
@@ -79,6 +84,7 @@ public class GodManager : MonoBehaviour {
     //If a bar has hit 0 or 100, end the game
     public static void checkEndGame(){
         if(bar1Value >= 100 || bar1Value <=0 || bar2Value >= 100 || bar2Value <=0 || bar3Value >= 100 || bar3Value <=0){
+			Debug.Log("Trans!");
             GameController.Transition();
         }
     }
