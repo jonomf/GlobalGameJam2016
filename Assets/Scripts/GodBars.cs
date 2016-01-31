@@ -25,7 +25,7 @@ public class GodManager : MonoBehaviour {
     public static bool applyPenalty3 = false;
 
     public static IEnumerator DecreaseOnTimer() {
-        while (UIController_GameScene.instance != null){
+        while (true){
             yield return new WaitForSeconds(DECREASE_SECONDS);
             decreaseBars();
         }
@@ -34,7 +34,6 @@ public class GodManager : MonoBehaviour {
     //UPDATE 3 bars by specified bars (called by player/enemy functions)
     public static void updateBars(int d1, int d2, int d3){
 		if (SceneManager.GetActiveScene().name != "Game scene") return;
-        if (UIController_GameScene.instance == null) return; // Not in the game scene.
         bar1Value += d1;
         bar2Value += d2;
         bar3Value += d3;
@@ -44,11 +43,11 @@ public class GodManager : MonoBehaviour {
     }
 
     //Decrease all bars by 1 (called at some regular interval)
-    private static void decreaseBars(){
-        if (UIController_GameScene.instance == null) return; // Not in the game scene.
+    public static void decreaseBars(){
+        if (SceneManager.GetActiveScene().name != "Game scene") return;
         bar1Value--;
         bar2Value--;
-        bar3Value--;
+        bar3Value -= 3; //TEMP
 
         checkEndGame();
         updateSliders();
@@ -63,7 +62,7 @@ public class GodManager : MonoBehaviour {
 
     //updates the actual sliders
     private static void updateSliders() {
-	    if (UIController_GameScene.instance == null) return; // Not in the game scene.
+	    if (SceneManager.GetActiveScene().name != "Game scene") return;
         //create local copies
         int val1 = bar1Value;
         int val2 = bar2Value;

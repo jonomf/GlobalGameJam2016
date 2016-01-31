@@ -9,8 +9,8 @@ public class GameController : MonoBehaviour {
     void Awake () {
 		instance = this;
         Layers.Init();
-        StartCoroutine(GodManager.DecreaseOnTimer());
 	    if (SceneManager.GetActiveScene().name == "Game scene"){
+            StartCoroutine(GodManager.DecreaseOnTimer());
 		    StartCoroutine(GameSceneLoop());
 	    }
 	}

@@ -73,8 +73,7 @@ public class UIController_Transition : MonoBehaviour {
                 SceneManager.LoadScene("Boss - Serenity");
             }
             else{
-                //Load Greed!
-                //SceneManager.LoadScene("Transition");
+                SceneManager.LoadScene("Boss - Greed");
             }
         }
     }
