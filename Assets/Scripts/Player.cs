@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 	public float arrowForce = 1000;
 	public float arrowReticleDistance = 2f;
 	[Header("Audio")]
-	public AudioSource collectAudio;
+	public static AudioSource collectAudio;
 	[Header("References")]
 	public GameObject arrowPrefab;
 	public GameObject arrowReticlePrefab;
@@ -50,9 +50,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.layer == Layers.CollectableNum) {
+		/*if (collision.gameObject.layer == Layers.CollectableNum) {
 			Collect(collision.gameObject);
-		}
+		}*/
 		if (collision.gameObject.layer == Layers.BossBulletNum){
 			gettingKnockedBack = true;
 			GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * 0.25f;
@@ -176,7 +176,7 @@ public class Player : MonoBehaviour {
         //GodManager.updateBars(1,-1,0);
 	}
 
-	private void Collect(GameObject obj) {
+	public static void Collect(GameObject obj) {
 		Destroy(obj);
 		collectAudio.Play();
         GodManager.updateBars(0,0,3);
