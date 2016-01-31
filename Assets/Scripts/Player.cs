@@ -47,15 +47,12 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
-		/*if (collision.gameObject.layer == Layers.CollectableNum) {
-			Collect(collision.gameObject);
-		}*/
 		if (collision.gameObject.layer == Layers.BossBulletNum){
 			gettingKnockedBack = true;
 			GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * 0.25f;
 			StartCoroutine(GetKnockedBack());
 			Destroy(collision.gameObject);
-			GetHurt(20);
+			GetHurt(4);
 		}
 	}
 

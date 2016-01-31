@@ -4,9 +4,7 @@ using UnityEngine.SceneManagement;
 
 //manages "happiness" bars for the 3 gods
 public class GodManager : MonoBehaviour {
-
-    //TODO: connect system to actual UNITY bars
-
+	
 	public static int bar1Value = 50;//Aggression
     public static int bar2Value = 50;//Serenity
     public static int bar3Value = 50;//Collection
