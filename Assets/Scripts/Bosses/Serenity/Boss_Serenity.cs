@@ -96,6 +96,9 @@ public class Boss_Serenity : MonoBehaviour {
 	}
 
 	private void GetHurt(float damage = 1f) {
+		if (state == State.Waiting){
+			state = State.Backup;
+		}
 		Health -= damage;
 		UIController_SerenityBoss.UpdateBossHealth();
 		if (Health <= 0){

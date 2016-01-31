@@ -8,6 +8,7 @@ public class Boss_Aggression : MonoBehaviour {
 
 	[Header("Settings")]
 	public int surviveTime = 15;
+	public int surviveTimeAddedPerHit = 1;
 	public float speed = 1;
 	public float volleyStartDelay = 1f;
 	public int numShotsPerVolley = 3;
@@ -17,13 +18,11 @@ public class Boss_Aggression : MonoBehaviour {
 	public GameObject bulletPrefab;
 
 	public static float RemainingTime { get { return instance.surviveTime - Time.timeSinceLevelLoad; } }
-
-	private Rigidbody2D pivotRb;
+	
 	private Transform pivot;
 
 	void Start() {
 		instance = this;
-		pivotRb = transform.parent.GetComponent<Rigidbody2D>();
 		pivot = transform.parent;
 		StartCoroutine(ShootVolley());
 	}
@@ -32,6 +31,12 @@ public class Boss_Aggression : MonoBehaviour {
 		pivot.RotateAround(Vector3.forward, speed * Time.deltaTime);
 		if (RemainingTime <= 0){
 			SceneManager.LoadScene("Win");
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.layer == Layers.PlayerArrowNum){
+			surviveTime += surviveTimeAddedPerHit;
 		}
 	}
 
