@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 //manages "happiness" bars for the 3 gods
 public class GodManager : MonoBehaviour {
@@ -28,6 +29,7 @@ public class GodManager : MonoBehaviour {
         bar2Value += d2;
         bar3Value += d3;
 
+        checkEndGame();
         updateSliders();
     }
 
@@ -37,6 +39,7 @@ public class GodManager : MonoBehaviour {
         bar2Value--;
         bar3Value--;
 
+        checkEndGame();
         updateSliders();
     }
 

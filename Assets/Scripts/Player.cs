@@ -47,15 +47,15 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.layer == Layers.CollectableNum) {
+		/*if (collision.gameObject.layer == Layers.CollectableNum) {
 			Collect(collision.gameObject);
-		}
+		}*/
 		if (collision.gameObject.layer == Layers.BossBulletNum){
 			gettingKnockedBack = true;
 			GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * 0.25f;
 			StartCoroutine(GetKnockedBack());
 			Destroy(collision.gameObject);
-			GetHurt();
+			GetHurt(20);
 		}
 	}
 
@@ -170,21 +170,20 @@ public class Player : MonoBehaviour {
 		arrowRb.AddForce(direction * arrowForce);
 		arrowReticle.position = Offscreen;
 
-        GodManager.updateBars(2,-1,0);
+        //GodManager.updateBars(1,-1,0);
 	}
 
-	private void Collect(GameObject obj) {
+	public static void Collect(GameObject obj) {
 		Destroy(obj);
-		collectAudio.Play();
-        GodManager.updateBars(0,0,2);
+		instance.collectAudio.Play();
+        GodManager.updateBars(0,0,3);
 	}
 
 	public static void GetHurt(float damage = 5f) {
-		Health -= damage;
+        Health -= damage;
 		UIContoller.UpdatePlayerHealth();
         GodManager.updateBars(0,1,0);
 		if (Health <= 0){
 			GameController.Lose();
 		}
-	}
-}
+	}}
