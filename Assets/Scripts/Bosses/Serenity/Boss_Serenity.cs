@@ -46,28 +46,21 @@ public class Boss_Serenity : MonoBehaviour {
 
 	void Update() {
 
+		if (Player.Position.x > transform.position.x) {
+			spriteRenderer.flipY = true;
+		} else {
+			spriteRenderer.flipY = false;
+		}
+
 		if (!anim.GetCurrentAnimatorStateInfo (0).IsName ("Phase_3_Block") && !anim.GetCurrentAnimatorStateInfo (0).IsName ("Phase_3_Attack")) {
 
 			if (!phase2 && !phase3) {
-				if (Player.Position.x > transform.position.x) {
-					anim.Play ("SerenityRight");
-					spriteRenderer.flipX = true;
-					spriteRenderer.flipY = true;
-				} else {
-					anim.Play ("Serenity");
-					spriteRenderer.flipX = false;
-					spriteRenderer.flipY = false;
-				}
+				anim.Play ("Serenity");
 			}
-			else if (!phase2 && phase3) {
+			else if (phase2 && !phase3) {
 				anim.Play ("Serenity_Phase_2");
-				if (Player.Position.x > transform.position.x) {
-					spriteRenderer.flipX = true;
-				} else {
-					spriteRenderer.flipX = false;
-				}
 			}
-			if (phase3) {
+			else if (phase3) {
 				anim.Play ("Serenity_Phase_3");
 			}
 		}
