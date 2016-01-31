@@ -15,8 +15,7 @@ public class Player : MonoBehaviour {
 	public float arrowReticleDistance = 2f;
     public float attack = 1;
     public float attackModifier = 2.0f;
-    public float defense = 0;
-    public float defenseModifier = 5;
+    public float healthModifier = 5;
 	[Header("References")]
 	public GameObject arrowPrefab;
 	public GameObject arrowReticlePrefab;
@@ -40,6 +39,9 @@ public class Player : MonoBehaviour {
 		instance = this;
 		arrowReticle = (Instantiate(arrowReticlePrefab, Offscreen, Quaternion.identity) as GameObject).transform;
 		anim = GetComponent<Animator> ();
+		if (GodManager.applyBuff2) {
+			startingHealth *= 2;
+		}
 		Health = startingHealth;
 		MaxHealth = Health;
 		UIContoller.UpdatePlayerHealth();
@@ -184,7 +186,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public static void GetHurt(float damage = 5f) {
-        Health -= Player.instance.getAdjustedDamage(damage);
+        Health -= damage;
 		UIContoller.UpdatePlayerHealth();
         GodManager.updateBars(0,1,0);
 		if (Health <= 0){
@@ -204,22 +206,13 @@ public class Player : MonoBehaviour {
 			Health = MaxHealth;
 		}
 	}
-
-    public float getAdjustedDamage(float damage){
-        float finalDamage = damage - getDefense();
-        if(finalDamage < 0) finalDamage = 0;
-        return finalDamage;
-    }
+		
 
     public float getAttack(){
         if(GodManager.applyBuff1) return attack * attackModifier;
         return attack;
     }
-
-    public float getDefense(){
-        if(GodManager.applyBuff2) return defense * defenseModifier;
-        return defense;
-    }
+		
 
     public float getSpeed(){
         if(GodManager.applyBuff3) return speed * speedModifier;

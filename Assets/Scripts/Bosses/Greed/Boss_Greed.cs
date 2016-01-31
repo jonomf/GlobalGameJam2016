@@ -20,7 +20,7 @@ public class Boss_Greed : MonoBehaviour {
 	private static float MaxHealth;
 	public Transform bossMove;
 
-	public float damage = Player.instance.getAttack() * 50;
+	public float damage = 1;
 	public float damRes = 0.95f;
 
 	static bool halfHealth = false;
@@ -51,14 +51,14 @@ public class Boss_Greed : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
 			Destroy(other.gameObject);
-			GetHurt (instance.damage);
+			GetHurt (Player.instance.getAttack() * 50 * damage);
 		}
 	}
 
 	public static void GetHurt (float damage = 50f) {
 		Health -= damage;
 		UIController_GreedBoss.UpdateBossHealth ();
-		if (Health < 250 && halfHealth == false) {
+		if (Health < MaxHealth / 2  && halfHealth == false) {
 			halfHealth = true;
 			StageTwo ();
 		}
