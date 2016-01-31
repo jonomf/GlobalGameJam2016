@@ -21,7 +21,7 @@ public class UIController_GameScene : MonoBehaviour {
     void Update() {
         secondsLeftText.text = string.Format("{0:00} seconds left!", RemainingGameTime);
         if (RemainingGameTime <= 0){
-            GameController.Lose();
+            GameController.Transition();
         }
     }
 }
