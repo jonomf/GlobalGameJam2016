@@ -10,8 +10,13 @@ public class Player : MonoBehaviour {
 	[Header("Settings")]
 	[SerializeField] private float startingHealth = 100;
 	public float speed;
+    public static float speedModifier = 2.0f;
 	public float arrowForce = 1000;
 	public float arrowReticleDistance = 2f;
+    public float attack = 1;
+    public float attackModifier = 2.0f;
+    public float defense = 0;
+    public float defenseModifier = 5;
 	[Header("References")]
 	public GameObject arrowPrefab;
 	public GameObject arrowReticlePrefab;
@@ -52,7 +57,7 @@ public class Player : MonoBehaviour {
 			GetComponent<Rigidbody2D>().velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * 0.25f;
 			StartCoroutine(GetKnockedBack());
 			Destroy(collision.gameObject);
-			GetHurt(4);
+            GetHurt(10);
 		}
 	}
 
@@ -124,7 +129,9 @@ public class Player : MonoBehaviour {
 		movement += Vector3.right * inputDevice.LeftStickX.Value + Vector3.up * inputDevice.LeftStickY.Value;
 		// Actually apply the movement
 		if (!gettingKnockedBack){
-			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.ClampMagnitude(movement, 1) * speed * Time.deltaTime);
+            float finalSpeed = speed;
+            if(GodManager.applyBuff3) finalSpeed = speed * speedModifier;
+			GetComponent<Rigidbody2D>().MovePosition(transform.position + Vector3.ClampMagnitude(movement, 1) * finalSpeed * Time.deltaTime);
 		}
 
 		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || inputDevice.GetControl(InputControlType.LeftStickX).WasReleased ||Input.GetKeyUp(KeyCode.S) || inputDevice.GetControl(InputControlType.LeftStickY).WasReleased ) {
@@ -177,7 +184,7 @@ public class Player : MonoBehaviour {
 	}
 
 	public static void GetHurt(float damage = 5f) {
-        Health -= damage;
+        Health -= Player.instance.getAdjustedDamage(damage);
 		UIContoller.UpdatePlayerHealth();
         GodManager.updateBars(0,1,0);
 		if (Health <= 0){
@@ -185,9 +192,37 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+    public static void AddHealth(float health = 1f){
+        Health += health;
+        UIContoller.UpdatePlayerHealth();
+        //GodManager.update(0,0,0);
+        CheckHealth();
+    }
+
 	public static void CheckHealth () {
 		if (Health > MaxHealth) {
 			Health = MaxHealth;
 		}
 	}
+
+    public float getAdjustedDamage(float damage){
+        float finalDamage = damage - getDefense();
+        if(finalDamage < 0) finalDamage = 0;
+        return finalDamage;
+    }
+
+    public float getAttack(){
+        if(GodManager.applyBuff1) return attack * attackModifier;
+        return attack;
+    }
+
+    public float getDefense(){
+        if(GodManager.applyBuff2) return defense * defenseModifier;
+        return defense;
+    }
+
+    public float getSpeed(){
+        if(GodManager.applyBuff3) return speed * speedModifier;
+        return speed;
+    }
 }

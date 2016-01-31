@@ -53,9 +53,9 @@ public class UIController_Transition : MonoBehaviour {
         }
 
         //set text
-        aggressionText.text = string.Format("aggression: {0} ({1})",val1,buffStr1);
-        serenityText.text = string.Format("serenity: {0} ({1})",val2,buffStr2);
-        greedText.text = string.Format("greed: {0} ({1})",val3,buffStr3);
+        aggressionText.text = string.Format("aggression: {0} {1}",val1,buffStr1);
+        serenityText.text = string.Format("serenity: {0} {1}",val2,buffStr2);
+        greedText.text = string.Format("greed: {0} {1}",val3,buffStr3);
 
         if(bossNum == 1) bossNameText.text = "Boss: Aggression";
         else if(bossNum == 2) bossNameText.text = "Boss: Serenity";
@@ -65,7 +65,7 @@ public class UIController_Transition : MonoBehaviour {
     void Update() {
         //Check for A button to change scene to correct boss
         inputDevice = InputManager.ActiveDevice;
-        if(Input.GetKeyDown(KeyCode.Space) || inputDevice.GetControl(InputControlType.Action1).WasPressed){
+        if(Input.GetKeyDown(KeyCode.A) || inputDevice.GetControl(InputControlType.Action1).WasPressed){
             if(bossNum == 1){
                 SceneManager.LoadScene("Boss - Aggression");
             }
@@ -73,8 +73,7 @@ public class UIController_Transition : MonoBehaviour {
                 SceneManager.LoadScene("Boss - Serenity");
             }
             else{
-                //Load Greed!
-                //SceneManager.LoadScene("Transition");
+                SceneManager.LoadScene("Boss - Greed");
             }
         }
     }
