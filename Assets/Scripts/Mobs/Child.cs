@@ -23,7 +23,7 @@ public class Child : MonoBehaviour {
                 //transform.SetParent(other.transform);
 			}
 		}
-        else if (other.gameObject.layer == Layers.PlayerArrowNum){
+        else if (!isHeld && other.gameObject.layer == Layers.PlayerArrowNum){
             Destroy(other.gameObject);
             Die();
         }

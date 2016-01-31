@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
 	public GameObject feedbackPopupPrefab;
 	public AnimationClip feedbackPopupAnimClip;
 
+    public static string lastScene = "Game scene";
+
 	void Awake () {
 		instance = this;
         Layers.Init();
@@ -30,10 +32,16 @@ public class GameController : MonoBehaviour {
     }
 
 	public static void Win() {
+        lastScene = SceneManager.GetActiveScene().name;
 		SceneManager.LoadScene("Win");
 	}
 
 	public static void Lose() {
+        lastScene = SceneManager.GetActiveScene().name;
 		SceneManager.LoadScene("Lose");
 	}
+
+    public static void LoadLastScene(){
+        SceneManager.LoadScene(lastScene);
+    }
 }
