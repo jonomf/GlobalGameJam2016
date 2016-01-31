@@ -13,11 +13,15 @@ public class Boss_Greed : MonoBehaviour {
 
 	[Header("Settings")]
 	public float startingHealth = 500;
-	public static float drainSpeed = 0.1f;
+
+	public float drainSpeed = 0.1f;
+	public float drainIncrease = 0.05f;
+
 	private static float MaxHealth;
 	public Transform bossMove;
 
-	public static float damageBuff = 50;
+	public float damage = 50;
+	public float damRes = 0.95f;
 
 	static bool halfHealth = false;
 
@@ -36,7 +40,7 @@ public class Boss_Greed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Player.GetHurt (drainSpeed);
+		Player.GetHurt (instance.drainSpeed);
 	}
 
 	public static void Regenerate(float regen = 100) {
@@ -47,7 +51,7 @@ public class Boss_Greed : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.layer == Layers.PlayerArrowNum){
 			Destroy(other.gameObject);
-			GetHurt (damageBuff);
+			GetHurt (instance.damage);
 		}
 	}
 
@@ -67,7 +71,7 @@ public class Boss_Greed : MonoBehaviour {
 	static void StageTwo () 
 	{
 		spriteRenderer.sprite = instance.secondSprite;
-		instance.transform.localScale = new Vector2 (42, 35);
+		instance.transform.localScale = new Vector2 (15, 15);
 		instance.transform.position = instance.bossMove.position;
 		instance.collectablesGroup.SetActive(true);
 	}

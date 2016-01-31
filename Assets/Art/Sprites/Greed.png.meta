@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 5424b96015a11dc4fb4048a5fc49dfb0
-timeCreated: 1454255773
-licenseType: Pro
+guid: 91b45e59fadf6e249b542f1d2a6eb8cb
+timeCreated: 1454255371
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Greed_0
+    21300002: Greed_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,26 +32,65 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Greed_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 6
+        width: 67
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.5, y: 58}
+        - {x: -33.5, y: 54}
+        - {x: -33.5, y: -58}
+        - {x: 12.5, y: -58}
+        - {x: 33.5, y: -47}
+        - {x: 33.5, y: 58}
+    - name: Greed_1
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 6
+        width: 67
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22.5, y: 58.5}
+        - {x: -17.5, y: 58.5}
+        - {x: -28.5, y: 53.5}
+        - {x: -31.5, y: 46.5}
+        - {x: -33.5, y: 40.5}
+        - {x: -33.5, y: -54.5}
+        - {x: -23.5, y: -58.5}
+        - {x: 23.5, y: -58.5}
+        - {x: 33.5, y: -51.5}
+        - {x: 33.5, y: 37.5}
+        - {x: 31.5, y: 57.5}
     outline: []
   spritePackingTag: 
   userData: 
